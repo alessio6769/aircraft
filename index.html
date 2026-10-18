@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle gv6swxyf</title>
+
+  <style>
+    
+  </style>
+
+  
+</head>
+<body>
+  
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081522">
+
+  <title>Spotzone Italy | Aircraft Spotting Community</title>
+  <meta name="description" content="Spotzone Italy: la community italiana dedicata all'aircraft spotting. Invia i tuoi scatti e condividi la tua passione per l'aviazione.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #081522;
+      --navy-light: #102438;
+      --blue: #1684d4;
+      --blue-light: #8bc9ff;
+      --amber: #f3b64c;
+      --white: #ffffff;
+      --muted: #b2c0ce;
+      --light: #f4f7fa;
+      --text: #142438;
+      --green: #20bd69;
+      --radius: 18px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .mono {
+      font-family: "Space Mono", monospace;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue);
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--amber);
+    }
+
+    .section-title {
+      margin-top: 12px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      font-weight: 800;
+    }
+
+    .section-description {
+      max-width: 620px;
+      margin-top: 16px;
+      color: #637284;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 22px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .2s ease, filter .2s ease,
+                  background .2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn-instagram {
+      color: #fff;
+      background: linear-gradient(110deg, #833ab4, #e1306c, #f77737);
+      box-shadow: 0 8px 24px #e1306c30;
+    }
+
+    .btn-whatsapp {
+      color: #fff;
+      background: #20bd69;
+      box-shadow: 0 8px 24px #20bd6930;
+    }
+
+    .btn-blue {
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .btn-outline {
+      color: #fff;
+      background: #ffffff0c;
+      border-color: #ffffff45;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #081522f5;
+      border-bottom: 1px solid #ffffff12;
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #8bc9ff55;
+      border-radius: 12px;
+      color: var(--blue-light);
+      background: #1684d41a;
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+
+    .brand-caption {
+      color: #9bafc2;
+      font-family: "Space Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 1.7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #d6e0e9;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-actions .btn {
+      min-height: 43px;
+      padding: 10px 15px;
+      font-size: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      color: white;
+      border: 1px solid #ffffff30;
+      background: transparent;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg,
+          #081522 0%,
+          #081522e8 32%,
+          #08152270 65%,
+          #08152225 100%),
+        linear-gradient(0deg, #08152285, transparent 45%),
+        url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding-block: 100px;
+    }
+
+    .hero .eyebrow {
+      color: var(--blue-light);
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 26px;
+      font-size: clamp(44px, 6.5vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -3.5px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--blue-light);
+    }
+
+    .hero-description {
+      max-width: 570px;
+      margin-top: 24px;
+      color: #d1dce6;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 54px;
+      padding-top: 22px;
+      border-top: 1px solid #ffffff28;
+      color: #b8c7d5;
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--amber);
+      border-radius: 50%;
+    }
+
+    /* SEZIONI */
+
+    .intro {
+      padding-block: 100px;
+      background: var(--light);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .intro-image {
+      min-height: 390px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(0deg, #08152250, transparent 50%),
+        url("https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1000&q=85")
+        center / cover;
+      overflow: hidden;
+    }
+
+    .intro-copy p {
+      margin-top: 20px;
+      color: #637284;
+      font-size: 15px;
+    }
+
+    .intro-copy .btn {
+      margin-top: 28px;
+    }
+
+    /* COME PUBBLICARE */
+
+    .publish {
+      padding-block: 100px;
+      background: #fff;
+    }
+
+    .publish-heading {
+      max-width: 680px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .publish-heading .eyebrow {
+      justify-content: center;
+    }
+
+    .publish-heading .section-description {
+      margin-inline: auto;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      position: relative;
+      padding: 30px;
+      border: 1px solid #e2e8ef;
+      border-radius: var(--radius);
+      background: #fff;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px #1024380d;
+    }
+
+    .step-number {
+      color: #94a4b5;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+    }
+
+    .step-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin-top: 25px;
+      border-radius: 16px;
+      background: #e8f3ff;
+      color: var(--blue);
+    }
+
+    .step:nth-child(2) .step-icon {
+      background: #fff2dc;
+      color: #b77915;
+    }
+
+    .step:nth-child(3) .step-icon {
+      background: #e6f8ee;
+      color: #16894a;
+    }
+
+    .step h3 {
+      margin-top: 24px;
+      font-size: 21px;
+      letter-spacing: -.5px;
+    }
+
+    .step p {
+      margin-top: 12px;
+      color: #637284;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .step-note {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 6px 9px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #526478;
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+    }
+
+    .publish-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 40px;
+      padding: 36px;
+      border-radius: var(--radius);
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .publish-cta h3 {
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+    }
+
+    .publish-cta p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .publish-cta .btn {
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding-block: 30px;
+      color: #9fb0c0;
+      background: #06101a;
+      border-top: 1px solid #ffffff12;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer p {
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-actions .btn {
+        padding-inline: 11px;
+      }
+
+      .intro-grid {
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        min-height: 70px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 24px 20px;
+        background: var(--navy);
+        border-bottom: 1px solid #ffffff20;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 13px 0;
+        border-bottom: 1px solid #ffffff12;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero {
+        min-height: 600px;
+      }
+
+      .hero-background {
+        background-image:
+          linear-gradient(90deg, #081522e8, #08152270),
+          linear-gradient(0deg, #081522a0, transparent),
+          url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=85");
+        background-position: center;
+      }
+
+      .hero-content {
+        padding-block: 80px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-image {
+        min-height: 320px;
+        order: -1;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        padding: 25px;
+      }
+
+      .publish-cta {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 28px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 36px);
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-caption {
+        font-size: 8px;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .hero h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-meta {
+        gap: 12px;
+        flex-direction: column;
+        margin-top: 36px;
+      }
+
+      .intro,
+      .publish {
+        padding-block: 70px;
+      }
+
+      .intro-image {
+        min-height: 250px;
+      }
+
+      .section-title {
+        letter-spacing: -1px;
+      }
+
+      .publish-cta .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
+
+<header class="header">
+  <div class="container navbar">
+
+    <a class="brand" href="#home" aria-label="Spotzone Italy, homepage">
+      <div class="brand-mark">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M2 16l20-8-8 14-3-7-9 1z"/>
+          <path d="M11 15l5-5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">SPOTZONE ITALY</div>
+        <div class="brand-caption">AIRCRAFT SPOTTING</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navigation" aria-label="Navigazione principale">
+      <a href="#home">Home</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#pubblicare">Come pubblicare</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-instagram"
+         href="https://www.instagram.com/spotzone_italy/"
+         target="_blank" rel="noopener noreferrer">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle"
+            type="button" aria-label="Apri il menu"
+            aria-expanded="false" aria-controls="navigation">
+      <svg class="icon" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-background" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <div class="eyebrow">Una community, una passione</div>
+
+      <h1>
+        Il cielo è il nostro
+        <span>punto di incontro.</span>
+      </h1>
+
+      <p class="hero-description">
+        Benvenuto su Spotzone Italy: uno spazio dedicato a chi ama
+        osservare, fotografare e condividere il mondo dell'aviazione.
+        Ogni scatto racconta una storia. La prossima potrebbe essere la tua.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-instagram"
+           href="https://www.instagram.com/spotzone_italy/"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          Seguici su Instagram
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="btn btn-outline" href="#pubblicare">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8
+                     8.5 8.5 0 0 1-7.6 4.7
+                     8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7
+                     A8.4 8.4 0 0 1 4 11.5
+                     8.5 8.5 0 0 1 8.7 3.9
+                     8.4 8.4 0 0 1 12.5 3h.5
+                     a8.5 8.5 0 0 1 8 8z"/>
+          </svg>
+          Come inviare le tue foto
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span><i class="status-dot"></i> AVIATION PHOTOGRAPHY</span>
+        <span>ITALY · WORLDWIDE</span>
+        <span>PASSION ABOVE EVERYTHING</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" id="chi-siamo">
+    <div class="container intro-grid">
+
+      <div class="intro-copy">
+        <div class="eyebrow">Chi siamo</div>
+
+        <h2 class="section-title">
+          Più di una fotografia.<br>
+          Una passione condivisa.
+        </h2>
+
+        <p>
+          Spotzone Italy nasce per riunire gli appassionati di
+          aircraft spotting e fotografia aeronautica in un unico
+          spazio dedicato agli aerei, alle livree e ai momenti
+          speciali che rendono ogni avvistamento unico.
+        </p>
+
+        <p>
+          Vogliamo dare visibilità agli scatti della community,
+          valorizzare il lavoro dei fotografi e condividere con
+          tutti la bellezza del mondo dell'aviazione.
+        </p>
+
+        <a class="btn btn-blue"
+           href="https://www.instagram.com/spotzone_italy/"
+           target="_blank" rel="noopener noreferrer">
+          Scopri la community
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="intro-image"
+           role="img"
+           aria-label="Fotografia aeronautica dimostrativa con atmosfera aeroportuale">
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<section class="publish" id="pubblicare">
+  <div class="container">
+
+    <div class="publish-heading">
+      <div class="eyebrow">Entra nella community</div>
+
+      <h2 class="section-title">
+        Il tuo prossimo scatto<br>
+        potrebbe volare con noi.
+      </h2>
+
+      <p class="section-description">
+        Hai fotografato un aereo interessante? Condividi il tuo
+        lavoro con Spotzone Italy. Inviaci le fotografie su WhatsApp:
+        gli scatti selezionati potranno essere pubblicati sul nostro
+        profilo Instagram.
+      </p>
+    </div>
+
+    <div class="steps">
+
+      <article class="step">
+        <div class="step-number">PASSAGGIO / 01</div>
+
+        <div class="step-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M22 2L11 13"/>
+            <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </div>
+
+        <h3>Invia le tue foto</h3>
+
+        <p>
+          Contattaci su WhatsApp e inviaci i tuoi scatti aeronautici.
+          Se puoi, aggiungi il modello dell'aereo, la registrazione,
+          l'aeroporto e il tuo nome o username Instagram.
+        </p>
+
+        <span class="step-note">01 — INVIO SU WHATSAPP</span>
+      </article>
+
+      <article class="step">
+        <div class="step-number">PASSAGGIO / 02</div>
+
+        <div class="step-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M9 12l2 2 4-4"/>
+            <circle cx="12" cy="12" r="9"/>
+          </svg>
+        </div>
+
+        <h3>Attendi la valutazione</h3>
+
+        <p>
+          Il nostro team esaminerà le fotografie in base alla qualità,
+          alla pertinenza e alle regole della community. L'invio non
+          garantisce la pubblicazione: ti faremo sapere se lo scatto
+          verrà selezionato.
+        </p>
+
+        <span class="step-note">02 — REVISIONE DELLO SCATTO</span>
+      </article>
+
+      <article class="step">
+        <div class="step-number">PASSAGGIO / 03</div>
+
+        <div class="step-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1"
+                    fill="currentColor"/>
+          </svg>
+        </div>
+
+        <h3>La tua foto su Instagram</h3>
+
+        <p>
+          Se il tuo scatto viene approvato e ne viene concordata
+          la pubblicazione, potrà apparire sul profilo Instagram
+          di Spotzone Italy, dando visibilità al tuo lavoro.
+        </p>
+
+        <span class="step-note">03 — PUBBLICAZIONE</span>
+      </article>
+
+    </div>
+
+    <div class="publish-cta">
+      <div>
+        <div class="eyebrow">Pronto al decollo?</div>
+
+        <h3 style="margin-top: 12px;">
+          Facciamo conoscere i tuoi scatti.
+        </h3>
+
+        <p>
+          Apri WhatsApp e inviaci le tue fotografie.
+          Ricordati di indicare il tuo credito fotografico.
+        </p>
+      </div>
+
+      <a class="btn btn-whatsapp"
+         href="https://wa.me/393290840317?text=Ciao%20Spotzone%20Italy!%20Vorrei%20inviare%20le%20mie%20foto%20di%20aircraft%20spotting."
+         target="_blank" rel="noopener noreferrer">
+
+        <svg class="icon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8
+                   8.5 8.5 0 0 1-7.6 4.7
+                   8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7
+                   A8.4 8.4 0 0 1 4 11.5
+                   8.5 8.5 0 0 1 8.7 3.9
+                   8.4 8.4 0 0 1 12.5 3h.5
+                   a8.5 8.5 0 0 1 8 8z"/>
+        </svg>
+
+        Invia le foto su WhatsApp
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <p style="margin-top: 24px; color: #718096; font-size: 12px;">
+      Inviando una fotografia, dichiari di esserne l'autore
+      o di disporre delle autorizzazioni necessarie. La
+      pubblicazione richiede l'approvazione e il consenso
+      dell'autore per l'utilizzo dello scatto. I crediti
+      fotografici saranno concordati prima della pubblicazione.
+    </p>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+
+    <a class="brand" href="#home">
+      <div>
+        <div class="brand-name">SPOTZONE ITALY</div>
+        <div class="brand-caption">AIRCRAFT SPOTTING</div>
+      </div>
+    </a>
+
+    <p>
+      © <span id="year">2026</span> Spotzone Italy.
+      Una passione che ci unisce.
+    </p>
+
+    <div class="footer-links">
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#pubblicare">Come pubblicare</a>
+      <a href="https://www.instagram.com/spotzone_italy/"
+         target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+    </div>
+
+  </div>
+</footer>
+</main>
+
+<script>
+  // Menu responsive per smartphone
+  const menuToggle = document.getElementById("menuToggle");
+  const navigation = document.getElementById("navigation");
+
+  if (menuToggle && navigation) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Chiudi il menu" : "Apri il menu"
+      );
+    });
+
+    // Chiude il menu dopo aver selezionato una sezione
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Apri il menu");
+      });
+    });
+
+    // Chiude il menu con il tasto Escape
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Apri il menu");
+      }
+    });
+  }
+
+  // Aggiorna automaticamente l'anno nel footer
+  const year = document.getElementById("year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+</script>
+
+</body>
+</html>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
